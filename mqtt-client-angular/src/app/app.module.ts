@@ -17,7 +17,8 @@ import { EventComponent } from './event/event.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { Router, RouterModule } from '@angular/router';
-import { LastEventsComponent } from './last-events/last-events.component'; // new
+import { LastEventsComponent } from './last-events/last-events.component';
+import { HomepageComponent } from './homepage/homepage.component'; // new
 export const connection: IMqttServiceOptions = {
   hostname: 'broker.emqx.io',
   port: 8083,
@@ -36,7 +37,8 @@ export const connection: IMqttServiceOptions = {
   declarations: [
     AppComponent,
     EventComponent,
-    LastEventsComponent
+    LastEventsComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,

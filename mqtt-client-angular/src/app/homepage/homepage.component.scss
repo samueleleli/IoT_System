@@ -1,0 +1,25 @@
+
+.homepage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* Imposta l'altezza dell'homepage */
+  margin: 0 auto 10vh auto;
+}
+
+.center-image {
+  max-width: 85%; /* L'immagine si adatta al suo contenitore */
+  max-height: 85%; /* L'immagine si adatta al suo contenitore */
+}
+/*  animation: rotation 20s infinite linear; Imposta l'animazione di rotazione
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+*/
