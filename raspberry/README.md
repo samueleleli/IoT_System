@@ -32,7 +32,7 @@ Le librerie necessarie sono:
 - *pyserial*: per poter ricevere i dati dalla seriale ​
 
   Comando
-```bash
+  ```bash
   sudo pip3 install pyserial --target=/usr/lib/python3/dist-packages
   ```
 
