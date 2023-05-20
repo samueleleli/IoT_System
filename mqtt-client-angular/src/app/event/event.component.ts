@@ -23,7 +23,7 @@ export class EventComponent implements OnInit {
     {value:  null,viewValue:""},
     {value: 'led', viewValue: 'Led'},
     {value: 'movimento', viewValue: 'Movimento'},
-    {value: 'prossimita', viewValue: 'Prossimità'},
+    {value: 'proxZone', viewValue: 'Prossimità'},
   ];
 
   selectedValue:Topic[] = []
@@ -43,8 +43,8 @@ export class EventComponent implements OnInit {
 
   prossimita_value:[
     {value: null, viewValue: ''},
-    {value: 'vicino', viewValue: 'Vicino'},
-    {value: 'lontano', viewValue: 'Lontano'},
+    {value: 'entrata', viewValue: 'Entrata'},
+    {value: 'uscita', viewValue: 'Uscita'},
   ]}
 
 
@@ -106,7 +106,7 @@ export class EventComponent implements OnInit {
         this.search()
         //this.localStorageSensors.setItem('topic', value);
         break;
-      case "prossimita":
+      case "proxZone":
         this.selectedValue = this.possibleValueFilter.prossimita_value;
         this.topicSelected = true;
         //this.localStorageSensors.setItem('topic', value);

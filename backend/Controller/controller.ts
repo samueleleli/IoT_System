@@ -27,7 +27,7 @@ export async function eventsList(filterMap:Map<String,Object>, res:any): Promise
    }
 }
 export async function getLastEvents(res:any){
-  const topics = ['led', 'movimento', 'prossimita'];
+  const topics = ['led', 'movimento', 'proxZone'];
   const mostRecentEvents = [];
 
   for (const topic of topics) {

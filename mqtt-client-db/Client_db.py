@@ -79,7 +79,7 @@ while not connection_ok:
 # subscribe to multiple topics
 topic1 = "led"
 topic2= "movimento"
-topic3 = "prossimita"
+topic3 = "proxZone"
 
 client.subscribe(topic1, qos=0) # to unsubscribe: unsubscribe(topic)
 client.subscribe(topic2, qos=0)

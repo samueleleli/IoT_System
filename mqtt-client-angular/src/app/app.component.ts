@@ -36,7 +36,7 @@ export class AppComponent {
     qos: 0,
   };
   private subscriptionProssimita = {
-    topic: 'prossimita',
+    topic: 'proxZone',
     qos: 0,
   };
   private connection = {
@@ -103,7 +103,7 @@ export class AppComponent {
               this.localStorageSensors.setItem('movimentoStatus', data.value);
               this.localStorageSensors.setItem('movimentoTimestamp',String(date));
               break;
-          case "prossimita":
+          case "proxZone":
               this.localStorageSensors.setItem('prossimitaStatus', data.value);
               this.localStorageSensors.setItem('prossimitaTimestamp',String(date));
               break;
@@ -131,5 +131,5 @@ export class AppComponent {
 
 mosquitto_pub -V mqttv311 -t led -m "{\"value\":\"on\",\"timestamp\":12113413}" -d
 mosquitto_pub -V mqttv311 -t movimento -m "{\"value\":\"rilevato\",\"timestamp\":1684012499}" -d
-mosquitto_pub -V mqttv311 -t prossimita -m "{\"value\":\"vicino\",\"timestamp\":\"25-03-2024 \"}" -d
+mosquitto_pub -V mqttv311 -t proxZone -m "{\"value\":\"entrata\",\"timestamp\":\"25-03-2024 \"}" -d
 */

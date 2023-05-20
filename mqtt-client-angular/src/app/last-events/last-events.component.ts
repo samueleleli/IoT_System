@@ -34,7 +34,7 @@ export class LastEventsComponent implements OnInit {
     qos: 0,
   };
   private subscriptionProssimita = {
-    topic: 'prossimita',
+    topic: 'proxZone',
     qos: 0,
   };
   private connection = {
@@ -94,7 +94,7 @@ export class LastEventsComponent implements OnInit {
                     this.localStorageSensors.setItem('movimentoStatus',el.value)
                   }
                   break;
-                case "prossimita":
+                case "proxZone":
                   timestamp = this.localStorageSensors.getItem('prossimitaTimestamp');
                   if(timestamp == null || Date.parse(timestamp) <= Date.parse(el.timestamp)){
                     this.localStorageSensors.setItem('prossimitaTimestamp',this.convertDateFormat(el.timestamp))
@@ -148,7 +148,7 @@ export class LastEventsComponent implements OnInit {
               this.localStorageSensors.setItem('movimentoStatus', data.value);
               this.localStorageSensors.setItem('movimentoTimestamp',String(date));
               break;
-          case "prossimita":
+          case "proxZone":
               this.localStorageSensors.setItem('prossimitaStatus', data.value);
               this.localStorageSensors.setItem('prossimitaTimestamp',String(date));
               break;

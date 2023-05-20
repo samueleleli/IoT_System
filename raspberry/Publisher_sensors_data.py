@@ -4,8 +4,8 @@ import time
 import serial
 import json
 
-list_topics = ["led","movimento","prossimita"]
-possible_states = [["acceso","spento"],["rilevato","non rilevato"],["vicino","lontano"]]
+list_topics = ["led","movimento","proxZone"]
+possible_states = [["acceso","spento"],["rilevato","non rilevato"],["entrata","uscita"]]
 
 client = mqtt.Client("P11") #create new instance
 client.connect("sam.local") #connect to broker

@@ -41,7 +41,7 @@ function eventsList(filterMap, res) {
 exports.eventsList = eventsList;
 function getLastEvents(res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const topics = ['led', 'movimento', 'prossimita'];
+        const topics = ['led', 'movimento', 'proxZone'];
         const mostRecentEvents = [];
         for (const topic of topics) {
             const mostRecentEvent = yield Data_1.Data.findOne({
