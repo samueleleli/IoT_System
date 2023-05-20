@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row text-center " style="margin-bottom: 20px;">
+     <div class="col col-md-12" style=" max-height: 100vh">
+        <form [formGroup]="searchForm" (ngSubmit)="search()">
+         <div class="row align-items-start">
+           <div class="col-md-6">
+             <mat-form-field>
+               <mat-label>Topic</mat-label>
+               <mat-select formControlName="topic" autofocus>
+                  <mat-option *ngFor="let topic of topics" [value]="topic.value">
+                  {{topic.viewValue}}
+                  </mat-option>
+               </mat-select>
+            </mat-form-field>
+           </div>
+           <div class="col-md-6">
+             <mat-form-field *ngIf="topicSelected">
+               <mat-label>Topic Value: </mat-label>
+               <mat-select formControlName="topic_value">
+                  <mat-option *ngFor="let topic_value of selectedValue" [value]="topic_value.value">
+                  {{topic_value.viewValue}}
+                  </mat-option>
+               </mat-select>
+            </mat-form-field>
+           </div>
+         </div>
+         <div class="row align-items-start">
+           <div class="col-md-6">
+           <mat-form-field>
+             <mat-label>Data di inizio:</mat-label>
+
+              <input  formControlName="start_date" type="datetime-local" matInput/>
+           </mat-form-field>
+           </div>
+           <div class="col-md-6">
+             <mat-form-field>
+               <mat-label>Data di fine:</mat-label>
+
+               <input  formControlName="end_date" type="datetime-local" matInput/>
+             </mat-form-field>
+           </div>
+         </div>
+        </form>
+     </div>
+
+  </div>
+  <div class="col col-md-4">
+   <!--
+
+
+    <div *ngIf="responseData">
+     <h2>Risposta API:</h2>
+     <pre>{{ preview | json }}</pre>
+     <pre>{{ responseData | json }}</pre>
+
+   </div>
+   -->
+</div>
+<table class="styled-table" style="margin-bottom: 20px;">
+  <thead>
+    <tr>
+      <th>Sensore</th>
+      <th>Stato</th>
+      <th>Data e ora</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let event of events">
+      <td style="font-weight:bold">{{event.topic}}</td>
+      <td>{{ event.value}}</td>
+      <td>{{ event.timestamp}}</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+

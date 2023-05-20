@@ -1,0 +1,11 @@
+[Unit]
+Description=Servizio che pubblica i dati sui topic
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /etc/init.d/Publisher_sensors_data.py
+WorkingDirectory=/etc/init.d/
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,28 @@
+<div class="home-container">
+  <p> </p>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Sensore</th>
+        <th>Stato</th>
+        <th>Ultimo Aggiornamento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-weight:bold">Led</td>
+        <td>{{ localStorageSensors.getItem('ledStatus') }}</td>
+        <td>{{ localStorageSensors.getItem('ledTimestamp')}}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold">Infrarossi</td>
+        <td>{{ localStorageSensors.getItem('movimentoStatus') }}</td>
+        <td>{{ localStorageSensors.getItem('movimentoTimestamp') }}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold">Ultrasuoni</td>
+        <td>{{ localStorageSensors.getItem('prossimitaStatus') }}</td>
+        <td>{{ localStorageSensors.getItem('prossimitaTimestamp') }}</td>
+      </tr>
+    </tbody>
+  </table>
