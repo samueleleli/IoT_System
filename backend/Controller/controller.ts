@@ -8,7 +8,10 @@ const sequelize: Sequelize = DBSingleton.getConnection();
 export async function eventsList(filterMap:Map<String,Object>, res:any): Promise<void>{
     try {
         if(filterMap.size == 0){
-            await Data.findAll().then((eventsList: object[]) => {
+            await Data.findAll({
+              attributes: ['topic', 'value', 'timestamp' ],
+              order: [['timestamp','DESC']],
+          }).then((eventsList: object[]) => {
                 res.status(200).json({Message:"All events", EventsList:eventsList});
             });
         }else{

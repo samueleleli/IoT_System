@@ -18,7 +18,10 @@ function eventsList(filterMap, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             if (filterMap.size == 0) {
-                yield Data_1.Data.findAll().then((eventsList) => {
+                yield Data_1.Data.findAll({
+                    attributes: ['topic', 'value', 'timestamp'],
+                    order: [['timestamp', 'DESC']],
+                }).then((eventsList) => {
                     res.status(200).json({ Message: "All events", EventsList: eventsList });
                 });
             }

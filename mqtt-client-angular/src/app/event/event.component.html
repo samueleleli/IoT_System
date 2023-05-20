@@ -44,19 +44,7 @@
      </div>
 
   </div>
-  <div class="col col-md-4">
-   <!--
-
-
-    <div *ngIf="responseData">
-     <h2>Risposta API:</h2>
-     <pre>{{ preview | json }}</pre>
-     <pre>{{ responseData | json }}</pre>
-
-   </div>
-   -->
-</div>
-<table class="styled-table" style="margin-bottom: 20px;">
+  <table class="styled-table">
   <thead>
     <tr>
       <th>Sensore</th>
@@ -71,7 +59,10 @@
       <td>{{ event.timestamp}}</td>
     </tr>
   </tbody>
-</table>
+  </table>
+  <div class="row">
+    <div class="col col-md-12" style=" max-height: 100vh"></div>
+  </div>
 
 </div>
 
