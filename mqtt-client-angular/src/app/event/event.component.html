@@ -2,8 +2,8 @@
   <div class="row text-center " style="margin-bottom: 20px;">
      <div class="col col-md-12" style=" max-height: 100vh">
         <form [formGroup]="searchForm" (ngSubmit)="search()">
-         <div class="row align-items-start">
-           <div class="col-md-6">
+         <div class="row align-items-start filter">
+           <div class="col-md-3">
              <mat-form-field>
                <mat-label>Topic</mat-label>
                <mat-select formControlName="topic" autofocus>
@@ -13,7 +13,7 @@
                </mat-select>
             </mat-form-field>
            </div>
-           <div class="col-md-6">
+           <div class="col-md-3">
              <mat-form-field *ngIf="topicSelected">
                <mat-label>Topic Value: </mat-label>
                <mat-select formControlName="topic_value">
@@ -23,16 +23,14 @@
                </mat-select>
             </mat-form-field>
            </div>
-         </div>
-         <div class="row align-items-start">
-           <div class="col-md-6">
+           <div class="col-md-3">
            <mat-form-field>
              <mat-label>Data di inizio:</mat-label>
 
               <input  formControlName="start_date" type="datetime-local" matInput/>
            </mat-form-field>
            </div>
-           <div class="col-md-6">
+           <div class="col-md-3">
              <mat-form-field>
                <mat-label>Data di fine:</mat-label>
 

@@ -69,7 +69,9 @@ p {
 .styled-table tbody tr:last-of-type {
   border-bottom: 2px solid #5B86C8;
 }
-
+.filter{
+  margin-top: 20px;
+}
 /* Media query per dispositivi mobili */
 @media (max-width: 768px) {
   .home-container {
