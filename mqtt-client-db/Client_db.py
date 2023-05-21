@@ -60,7 +60,7 @@ while not connection_ok:
   engine = create_engine(connection_string, echo=True)
 
   # client creation
-  client_id = "db1"
+  client_id = "client-db"
   client =mqtt.Client(client_id) # creazione nuovo client (argomento: nome del client)
 
   # set the callback function
@@ -84,7 +84,6 @@ topic3 = "proxZone"
 client.subscribe(topic1, qos=0) # to unsubscribe: unsubscribe(topic)
 client.subscribe(topic2, qos=0)
 client.subscribe(topic3, qos=0)
-client.subscribe([("topic1", 0), ("topic2", 0), ("topic3", 0)]) # QoS could be 0,1,2
 
 # start the MQTT loop to listen for incoming messages
 client.loop_forever()

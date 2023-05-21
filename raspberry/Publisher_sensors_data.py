@@ -7,7 +7,7 @@ import json
 list_topics = ["led","movimento","proxZone"]
 possible_states = [["acceso","spento"],["rilevato","non rilevato"],["entrata","uscita"]]
 
-client = mqtt.Client("P11") #create new instance
+client = mqtt.Client("raspberry-client") #create new instance
 client.connect("sam.local") #connect to broker
 
 serial_ok = False
@@ -40,10 +40,10 @@ while 1:
       index = list_topics.index(topic)
       value = payload_dict["value"]
       if value in possible_states[index]:
-        data = "{\"value\":\""+payload_dict["value"]+"\",\"timestamp\",\""+payload_dict["timestamp"]+"\"}"
+        data = "{\"value\":\""+payload_dict["value"]+"\",\"timestamp\":\""+payload_dict["timestamp"]+"\"}"
         client.publish(topic,data)
    except Exception as e:
     print(e)
     print("errors")
-  time.sleep(0.01)
+  client.loop(.1)
 
