@@ -31,7 +31,6 @@ p {
   margin-left: auto;
   margin-right: auto;
   border-collapse: collapse;
-  margin-bottom: 100px;
   font-size: 1.2em;
   font-family: sans-serif;
   width: 100%;
@@ -43,6 +42,19 @@ p {
   text-align: center;
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+#table-wrapper {
+  position:relative;
+}
+#table-scroll {
+  max-height:400px;
+  overflow:auto;
+  margin-top:20px;
+}
+#table-wrapper table {
+  width:100%;
+
 }
 
 

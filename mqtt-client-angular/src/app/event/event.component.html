@@ -15,7 +15,7 @@
            </div>
            <div class="col-md-3">
              <mat-form-field *ngIf="topicSelected">
-               <mat-label>Topic Value: </mat-label>
+               <mat-label>Topic Value </mat-label>
                <mat-select formControlName="topic_value">
                   <mat-option *ngFor="let topic_value of selectedValue" [value]="topic_value.value">
                   {{topic_value.viewValue}}
@@ -25,14 +25,14 @@
            </div>
            <div class="col-md-3">
            <mat-form-field>
-             <mat-label>Data di inizio:</mat-label>
+             <mat-label>Data di inizio</mat-label>
 
               <input  formControlName="start_date" type="datetime-local" matInput/>
            </mat-form-field>
            </div>
            <div class="col-md-3">
              <mat-form-field>
-               <mat-label>Data di fine:</mat-label>
+               <mat-label>Data di fine</mat-label>
 
                <input  formControlName="end_date" type="datetime-local" matInput/>
              </mat-form-field>
@@ -42,6 +42,8 @@
      </div>
 
   </div>
+  <div id="table-wrapper">
+    <div id="table-scroll">
   <table class="styled-table">
   <thead>
     <tr>
@@ -58,6 +60,8 @@
     </tr>
   </tbody>
   </table>
+    </div>
+  </div>
   <div class="row">
     <div class="col col-md-12" style=" max-height: 100vh"></div>
   </div>
