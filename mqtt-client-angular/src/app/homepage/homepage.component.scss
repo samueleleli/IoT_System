@@ -10,7 +10,8 @@
 .center-image {
   max-width: 85%; /* L'immagine si adatta al suo contenitore */
   max-height: 85%; /* L'immagine si adatta al suo contenitore */
-  animation: rotation 20s infinite linear; 
+  // animation: rotation 20s infinite linear;
+  transform: rotate(30deg);
 }
 
 @keyframes rotation {
@@ -20,4 +21,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.homepage-title {
+  font-size: 32px; /* Adjust the font size to your preference */
+  font-weight: bold; /* Set the font weight to bold */
+  text-transform: uppercase; /* Convert the text to uppercase */
+  letter-spacing: 2px; /* Add letter spacing for a spaced-out effect */
+  color: #000; /* Set the text color */
+  text-align: center; /* Align the title to the center */
+  margin-top: 20px; /* Add top margin for spacing */
 }

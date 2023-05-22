@@ -164,3 +164,9 @@ table tr th:first-child {
     text-align: center;
   }
 }
+
+.nav-item.active .nav-link {
+  background-color: #f8f9fa; /* Add your desired background color for the active link */
+  color: #333; /* Add your desired text color for the active link */
+  /* Add any other styles you want for the active link */
+}
