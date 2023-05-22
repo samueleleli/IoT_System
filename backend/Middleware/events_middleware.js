@@ -45,7 +45,7 @@ const validateValueTopic = (req, res, next) => __awaiter(void 0, void 0, void 0,
 });
 exports.validateValueTopic = validateValueTopic;
 const validateDate = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const check = new RegExp(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z$/);
+    const check = new RegExp(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/); //Z$/);
     if (Object.keys(req.body).includes('start_date') && Object.keys(req.body).includes('end_date')) {
         if (check.test(req.body.start_date) && Date.parse(req.body.start_date) &&
             (check.test(req.body.end_date) && Date.parse(req.body.end_date)) &&
@@ -58,7 +58,7 @@ const validateDate = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
         }
     }
     else if (!Object.keys(req.body).includes('start_date') && Object.keys(req.body).includes('end_date')) {
-        req.body.start_date = "1970-01-01T00:00:00.000Z";
+        req.body.start_date = "1970-01-01T00:00:00.000"; //Z"
         if ((check.test(req.body.end_date) && Date.parse(req.body.end_date)) &&
             Date.parse(req.body.start_date) <= Date.parse(req.body.end_date)) {
             next();
@@ -76,7 +76,7 @@ const validateDate = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
         const hour = today.getHours().toString().padStart(2, '0');
         const minute = today.getMinutes().toString().padStart(2, '0');
         const second = today.getSeconds().toString().padStart(2, '0');
-        const timestamp = today.getFullYear() + '-' + month + '-' + day + 'T' + hour + ':' + minute + ':' + second + 'Z';
+        const timestamp = today.getFullYear() + '-' + month + '-' + day + 'T' + hour + ':' + minute + ':' + second; //+ 'Z';
         console.log(timestamp);
         req.body.end_date = timestamp;
         if (check.test(req.body.start_date) && Date.parse(req.body.start_date) &&

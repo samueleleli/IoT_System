@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { HttpClient } from '@angular/common/http';
 import { EventsService } from '../services/events.service';
 import { Event } from '../model/Event';
+import { format } from 'date-fns';
 
 
 interface Topic{
@@ -27,6 +28,12 @@ export class EventComponent implements OnInit {
   ];
 
   selectedValue:Topic[] = []
+
+  possibleValueTopic: any = {
+    "led": [],
+    "movimento": [],
+    "proxZone": [],
+  }
 
   possibleValueFilter:any = {
   led_value: [
@@ -98,18 +105,15 @@ export class EventComponent implements OnInit {
         this.selectedValue = this.possibleValueFilter.movimento_value;
         this.topicSelected = true;
         this.search()
-        //this.localStorageSensors.setItem('topic', value);
         break;
       case "led":
         this.selectedValue = this.possibleValueFilter.led_value;
         this.topicSelected = true;
         this.search()
-        //this.localStorageSensors.setItem('topic', value);
         break;
       case "proxZone":
         this.selectedValue = this.possibleValueFilter.prossimita_value;
         this.topicSelected = true;
-        //this.localStorageSensors.setItem('topic', value);
         this.search()
         break;
       case null:
@@ -122,20 +126,25 @@ export class EventComponent implements OnInit {
   onValueTopicChanged(value:string) {
     const formData = this.searchForm.value;
     if(formData.topic != null) formData.topic_value = value;
+    else formData.topic_value = null;
     this.search()
   }
 
   onStartDateChanged(value:string) {
     const formData= this.searchForm.value;
-    formData.start_date = value;
-    console.log(value)
+    const check = new RegExp(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/)
+    if(check.test(value)) formData.start_date = value;
+    else formData.start_date = null;
     this.search()
   }
   onEndDateChanged(value:string) {
     const formData = this.searchForm.value;
-    formData.end_date = value;
+    const check = new RegExp(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/)
+    if(check.test(value)) formData.end_date = value;
+    else formData.end_date = null;
     this.search()
   }
+
   setDefaults() {
     this.searchForm.get("start_date")?.patchValue(null);
     this.searchForm.get("end_date")?.patchValue(null);
@@ -147,25 +156,35 @@ export class EventComponent implements OnInit {
 
   search() {
     const formData = this.searchForm.value;
-
+    const secondsToAdd = 0;
     if(formData.start_date == null) delete formData.start_date;
     else {
+      try{
       let start_date:string = formData.start_date
-      if(!start_date.includes(":00Z")) formData.start_date = formData.start_date+":00Z"
-      if(formData.start_date  === ":00Z") formData.start_date = null
+      const formattedDateTime = format(new Date(start_date), `yyyy-MM-dd'T'HH:mm`);
+      formData.start_date  = `${formattedDateTime}:${secondsToAdd.toString().padStart(2, '0')}`;
+      } catch{
+        console.log("error")
+      }
     }
     if(formData.end_date == null) delete formData.end_date;
     else {
-      let end_date:string = formData.end_date
-      if(!end_date.includes(":00Z")) formData.end_date = formData.end_date+":00Z"
-      if(formData.end_date  === ":00Z") formData.end_date = null
-      console.log("a")
+      try{
+        let end_date:string = formData.end_date
+        const formattedDateTime = format(new Date(end_date), `yyyy-MM-dd'T'HH:mm`);
+        formData.end_date  = `${formattedDateTime}:${secondsToAdd.toString().padStart(2, '0')}`;
+      }
+      catch{
+        console.log("error")
+      }
+
     }
 
     if(formData.topic == null) delete formData.topic;
     if(formData.topic_value == null) delete formData.topic_value;
     if(formData.end_date == null) delete formData.end_date;
     if(formData.start_date == null) delete formData.start_date;
+
     const formDataString = JSON.stringify(formData);
     this.preview = formDataString
     //this.preview = formDataString

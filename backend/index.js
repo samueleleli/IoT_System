@@ -22,10 +22,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const controller = __importStar(require("./Controller/controller"));
 const middleware = __importStar(require("./Middleware/events_middleware"));
+const moment_1 = __importDefault(require("moment"));
 const express = require('express');
 const bodyparser = require('body-parser');
 const cors = require('cors');
@@ -53,7 +57,7 @@ app.post('/event', middleware.validateTopic, middleware.validateValueTopic, midd
     if (Object.keys(req.body).includes('topic_value'))
         filter.set("value", req.body.topic_value);
     if (Object.keys(req.body).includes('start_date') && Object.keys(req.body).includes('end_date'))
-        filter.set("timestamp", { [sequelize_1.Op.between]: [req.body.start_date, req.body.end_date] });
+        filter.set("timestamp", { [sequelize_1.Op.between]: [(0, moment_1.default)(req.body.start_date).utcOffset("+02:00").format(), (0, moment_1.default)(req.body.end_date).utcOffset("+02:00").format()] });
     controller.eventsList(filter, res);
 });
 app.get("/lastEvents", (req, res) => {

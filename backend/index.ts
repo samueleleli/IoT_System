@@ -1,6 +1,7 @@
 import { Op } from 'sequelize';
 import * as controller from './Controller/controller';
 import * as middleware from './Middleware/events_middleware';
+import moment from 'moment';
 
 const express = require('express');
 const bodyparser = require('body-parser');
@@ -35,7 +36,7 @@ app.post('/event', middleware.validateTopic,middleware.validateValueTopic,middle
   if(Object.keys(req.body).includes('topic')) filter.set("topic",req.body.topic);
   if(Object.keys(req.body).includes('topic_value')) filter.set("value",req.body.topic_value);
   if(Object.keys(req.body).includes('start_date') && Object.keys(req.body).includes('end_date'))
-    filter.set("timestamp",{[Op.between]:[req.body.start_date,req.body.end_date]})
+    filter.set("timestamp",{[Op.between]:[moment(req.body.start_date).utcOffset("+02:00").format(),moment(req.body.end_date).utcOffset("+02:00").format()]})
   controller.eventsList(filter, res);
 });
 
@@ -47,3 +48,4 @@ app.get("/lastEvents",(req:any,res:any)=>{
 app.listen(3000,()=>{
   console.log('server running');
 })
+

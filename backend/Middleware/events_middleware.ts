@@ -33,7 +33,7 @@ export const validateValueTopic = async (req: any, res: any, next: any) => {
 }
 
 export const validateDate = async (req:any,res:any,next:any) =>{
-    const check = new RegExp(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z$/);
+    const check = new RegExp(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/)//Z$/);
     if(Object.keys(req.body).includes('start_date') && Object.keys(req.body).includes('end_date') ){
       if(check.test(req.body.start_date) && Date.parse(req.body.start_date) &&
       (check.test(req.body.end_date) && Date.parse(req.body.end_date)) &&
@@ -44,7 +44,7 @@ export const validateDate = async (req:any,res:any,next:any) =>{
         next("error date non valida")
       }
     } else if(!Object.keys(req.body).includes('start_date') && Object.keys(req.body).includes('end_date') ){
-      req.body.start_date = "1970-01-01T00:00:00.000Z"
+      req.body.start_date = "1970-01-01T00:00:00.000"//Z"
       if( (check.test(req.body.end_date) && Date.parse(req.body.end_date)) &&
         Date.parse(req.body.start_date) <= Date.parse(req.body.end_date) ){
         next()
@@ -60,7 +60,7 @@ export const validateDate = async (req:any,res:any,next:any) =>{
         const hour = today.getHours().toString().padStart(2, '0');
         const minute = today.getMinutes().toString().padStart(2, '0');
         const second = today.getSeconds().toString().padStart(2, '0');
-        const timestamp = today.getFullYear() + '-' + month + '-' + day + 'T' + hour + ':' + minute + ':' + second + 'Z';
+        const timestamp = today.getFullYear() + '-' + month + '-' + day + 'T' + hour + ':' + minute + ':' + second //+ 'Z';
         console.log(timestamp)
         req.body.end_date = timestamp
 

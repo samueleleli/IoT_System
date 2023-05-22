@@ -60,11 +60,11 @@ export class LastEventsComponent implements OnInit {
 
   private convertDateFormat(inputDate:string) {
     const dateObj = new Date(inputDate);
-
+    let hour:number = dateObj.getHours() - 2
     const year = dateObj.getFullYear();
     const month = ('0' + (dateObj.getMonth() + 1)).slice(-2);
     const day = ('0' + dateObj.getDate()).slice(-2);
-    const hours = ('0' + dateObj.getHours()).slice(-2);
+    const hours = ('0' + hour).slice(-2);
     const minutes = ('0' + dateObj.getMinutes()).slice(-2);
     const seconds = ('0' + dateObj.getSeconds()).slice(-2);
 
@@ -78,7 +78,6 @@ export class LastEventsComponent implements OnInit {
         let list:any[] = response.EventsList
         list.forEach((el)=>{
            let timestamp:any = ""
-           console.log(el)
             switch(el.topic){
                 case "led":
                   timestamp = this.localStorageSensors.getItem('ledTimestamp');
@@ -96,6 +95,8 @@ export class LastEventsComponent implements OnInit {
                   break;
                 case "proxZone":
                   timestamp = this.localStorageSensors.getItem('prossimitaTimestamp');
+                  console.log(timestamp)
+                  console.log(el.timestamp)
                   if(timestamp == null || Date.parse(timestamp) <= Date.parse(el.timestamp)){
                     this.localStorageSensors.setItem('prossimitaTimestamp',this.convertDateFormat(el.timestamp))
                     this.localStorageSensors.setItem('prossimitaStatus',el.value)

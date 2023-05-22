@@ -23,6 +23,9 @@ export class DBSingleton {
 			host: process.env['MYSQLHOST'],
 			port: Number(process.env['MYSLQPORT']),
 			dialect: 'mysql',
+            dialectOptions: {
+                timezone: "-02:00"
+              },
 		});
 	}
 
