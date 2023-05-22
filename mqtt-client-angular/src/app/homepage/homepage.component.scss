@@ -23,12 +23,28 @@
   }
 }
 
-.homepage-title {
+.homepage-title{
   font-size: 32px; /* Adjust the font size to your preference */
   font-weight: bold; /* Set the font weight to bold */
-  text-transform: uppercase; /* Convert the text to uppercase */
   letter-spacing: 2px; /* Add letter spacing for a spaced-out effect */
   color: #000; /* Set the text color */
   text-align: center; /* Align the title to the center */
   margin-top: 20px; /* Add top margin for spacing */
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+  width: auto\9; /* ie8 */
+}
+
+/*
+header h1 {
+  font-size: 70px;
+
+  background-image: linear-gradient(to left, #553c9a, #b393d3);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+*/
