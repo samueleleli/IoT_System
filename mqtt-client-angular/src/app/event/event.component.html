@@ -4,17 +4,17 @@
         <form [formGroup]="searchForm" (ngSubmit)="search()">
          <div class="row align-items-start filter">
            <div class="col-md-3">
-             <mat-form-field>
-               <mat-label>Topic</mat-label>
-               <mat-select formControlName="topic" autofocus>
-                  <mat-option *ngFor="let topic of topics" [value]="topic.value">
+             <mat-form-field appearance="outline">
+               <mat-label >Topic</mat-label>
+               <mat-select formControlName="topic" autofocus >
+                  <mat-option  *ngFor="let topic of topics" [value]="topic.value">
                   {{topic.viewValue}}
                   </mat-option>
                </mat-select>
             </mat-form-field>
            </div>
            <div class="col-md-3">
-             <mat-form-field *ngIf="topicSelected">
+             <mat-form-field *ngIf="topicSelected" appearance="outline">
                <mat-label>Topic Value </mat-label>
                <mat-select formControlName="topic_value">
                   <mat-option *ngFor="let topic_value of selectedValue" [value]="topic_value.value">
@@ -24,14 +24,14 @@
             </mat-form-field>
            </div>
            <div class="col-md-3">
-           <mat-form-field>
+           <mat-form-field appearance="outline">
              <mat-label>Data di inizio</mat-label>
 
               <input  formControlName="start_date" type="datetime-local" matInput/>
            </mat-form-field>
            </div>
            <div class="col-md-3">
-             <mat-form-field>
+             <mat-form-field appearance="outline">
                <mat-label>Data di fine</mat-label>
 
                <input  formControlName="end_date" type="datetime-local" matInput/>
@@ -44,7 +44,7 @@
   </div>
   <div id="table-wrapper">
     <div id="table-scroll">
-  <table class="styled-table">
+  <table class="styled-table" style="margin-bottom: 10px;">
   <thead>
     <tr>
       <th>Sensore</th>
@@ -65,7 +65,9 @@
   <div class="row">
     <div class="col col-md-12" style=" max-height: 100vh"></div>
   </div>
-
+  <div >
+    <p></p>
+  </div>
 </div>
 
 

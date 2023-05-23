@@ -1,3 +1,4 @@
+@import 'src/styles/colors.scss';
 
 .home-container {
   max-width: 1100px;
@@ -8,7 +9,7 @@
 
 .conn-btn {
   color: #fff;
-  background-color: #5B86C8;
+  background-color: $primary-color;
   font-size: 14px;
 }
 
@@ -59,7 +60,7 @@ p {
 
 
 .styled-table thead tr {
-  background-color: #5B86C8;
+  background-color: $primary-color;//#5B86C8;
   color: #ffffff;
   text-align: center;
 }
@@ -79,7 +80,7 @@ p {
 }
 
 .styled-table tbody tr:last-of-type {
-  border-bottom: 2px solid #5B86C8;
+  border-bottom: 2px solid $primary-color;
 }
 .filter{
   margin-top: 20px;
@@ -91,3 +92,86 @@ p {
   }
 }
 
+.empty-div
+{
+   width: 100%;
+   min-height: 30px;
+}
+
+// mat-icon-stepper selected color change
+::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: $primary-color!important;
+}
+
+//input outline color
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: $primary-color!important;
+  // opacity: 1!important;
+}
+
+//mat-input focused color
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: $primary-color!important;
+}
+
+// mat-input error outline color
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick{
+  color: $primary-color!important;
+  opacity: 0.8!important;
+}
+
+// mat-input carent color
+::ng-deep .mat-input-element {
+  caret-color: $primary-color!important;
+}
+
+// mat-input error carent color
+::ng-deep .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
+  caret-color: $primary-color!important;
+}
+
+// mat-label normal state style
+::ng-deep .mat-form-field-label {
+  color: rgba(0,0,0,.6)!important;
+  // color: $mainColor!important;
+}
+
+// mat-label focused style
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: $primary-color!important;
+}
+
+// mat-label error style
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: $primary-color!important;
+}
+
+
+::ng-deep .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+  color: $primary-color!important;
+  border-color: $primary-color!important;
+}
+
+
+
+/*
+
+::ng-deep .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+  color: blue;
+  border-color: blue;
+}
+
+::ng-deep .mat-select-value {
+  color: blue;
+}
+
+::ng-deep .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+  color: blue;
+}
+
+::ng-deep .mat-select-value {
+  color: green
+}
+
+
+*/
