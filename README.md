@@ -4,8 +4,10 @@
 L'obiettivo del progetto è stato quello di realizzare un applicativo IoT completo, ovvero, partendo dall'acquisizione dei dati  tramite sensori si è arrivati al loro salvataggio e, infine, alla loro visualizzazione.
 
 Il progetto è composta da dei dispositivi, componenti e software da dover utilizzare obbligatoriamente e da dei requisiti da dover rispettare. Il tutto è riassumibile nella seguente tabella:
+<p align="center">
+  <img width="55%" height="55%" src="https://github.com/samueleleli/IoT_application/assets/45701240/684f874d-d5fc-4fa1-a685-04b768f86e68">
+</p>
 
-![image](https://github.com/samueleleli/IoT_application/assets/45701240/684f874d-d5fc-4fa1-a685-04b768f86e68)
 
 La repository è composta da 5 directory:
 
@@ -16,9 +18,9 @@ La repository è composta da 5 directory:
 - _**raspberry**_: contiene al suo interno due script. Uno che permette di recuperare gli eventi inviati da Arduino tramite seriale e li pubblica sui topic. L'altro contiene lo script che permette di sincronizzare l'_**RTC**_.
 
 Un'immigine semplificativa dei collegamenti tra i dispositivi è mostrata di seguito:
-
-![image](https://github.com/samueleleli/IoT_application/assets/45701240/b30c6e22-d3ef-4640-84dd-9b912be4e937)
-
+<p align="center">
+  <img width="50%" height="50%" src="https://github.com/samueleleli/IoT_application/assets/45701240/b30c6e22-d3ef-4640-84dd-9b912be4e937">
+</p>
 
 ## Autori
 
