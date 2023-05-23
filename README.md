@@ -5,9 +5,8 @@ L'obiettivo del progetto è stato quello di realizzare un applicativo IoT comple
 
 Il progetto è composta da dei dispositivi, componenti e software da dover utilizzare obbligatoriamente e da dei requisiti da dover rispettare. Il tutto è riassumibile nella seguente tabella:
 <p align="center">
-  <img width="55%" height="55%" src="https://github.com/samueleleli/IoT_application/assets/45701240/684f874d-d5fc-4fa1-a685-04b768f86e68">
+  <img width="55%" height="55%" src="https://github.com/samueleleli/IoT_application/assets/45701240/97a623f8-8d48-4435-a6d9-0a14ec49aa9a">
 </p>
-
 
 La repository è composta da 5 directory:
 
@@ -19,7 +18,7 @@ La repository è composta da 5 directory:
 
 Un'immigine semplificativa dei collegamenti tra i dispositivi è mostrata di seguito:
 <p align="center">
-  <img width="50%" height="50%" src="https://github.com/samueleleli/IoT_application/assets/45701240/b30c6e22-d3ef-4640-84dd-9b912be4e937">
+  <img width="50%" height="50%" src="https://github.com/samueleleli/IoT_application/assets/45701240/4d035aaf-cd8d-40a5-b7fc-aa69e71a5b94">
 </p>
 
 ## Autori
