@@ -10,10 +10,9 @@ Il dispositivo Raspberry Pi è stato utilizzato per:
         - spento
     - Movimento: gli eventi che sono associati al sensore a infrarossi
         - rilevato
-        - non rilevato
     - proxZone: gli eventi che sono associati al sensore a ultrasuoni
         - entrata (nella zona di prossimità)
-        - sucita (dalla zona di prossimità)
+        - uscita (dalla zona di prossimità)
 - Sincronizzare il modulo RTC collegato all'arduino
 
 
