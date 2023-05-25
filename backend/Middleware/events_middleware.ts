@@ -1,11 +1,13 @@
-
+// funzione per validare i topic
 export const validateTopic = async (req: any, res: any, next: any) => {
   console.log("request body: ", req.body);
-  if(!Object.keys(req.body).includes('topic')){
+  if(!Object.keys(req.body).includes('topic')){ // se non è presente  nel body vuol dire che
+                                                // l'utente non vuole filtrare per topic
     next()
   }
   else{
-    if(isNaN(req.body.topic)){
+    // se è presente il parametro topic si controlla il tipo
+    if(isNaN(req.body.topic)){  // il topic deve essere una stringa
       next()
     }
     else{
@@ -14,10 +16,11 @@ export const validateTopic = async (req: any, res: any, next: any) => {
   }
 };
 
+// funzione per validare il valore del topic
 export const validateValueTopic = async (req: any, res: any, next: any) => {
-  if(Object.keys(req.body).includes('topic_value')){
-    if(Object.keys(req.body).includes('topic')){
-      if(isNaN(req.body.topic)){
+  if(Object.keys(req.body).includes('topic_value')){ // se il body ha l'attributo topic_value
+    if(Object.keys(req.body).includes('topic')){ // si controlla che abbia anche inserito il valore del topic
+      if(isNaN(req.body.topic)){  // si controlla che sia una stringa
         next()
       }
       else{
@@ -28,31 +31,37 @@ export const validateValueTopic = async (req: any, res: any, next: any) => {
     }
   }
   else{
+    // vuol dire che l'utente non vuole filtrare per valore del topic
     next()
   }
 }
 
+// funzione per validare la data
 export const validateDate = async (req:any,res:any,next:any) =>{
-    const check = new RegExp(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/)//Z$/);
+    // espressione regolare da utilizzare per il tesrting della data
+    const check = new RegExp(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/)
     if(Object.keys(req.body).includes('start_date') && Object.keys(req.body).includes('end_date') ){
+      // caso 1: se l'utente ha incluso sia data di inizio che data di fine
       if(check.test(req.body.start_date) && Date.parse(req.body.start_date) &&
       (check.test(req.body.end_date) && Date.parse(req.body.end_date)) &&
       Date.parse(req.body.start_date) <= Date.parse(req.body.end_date) ){
+        // se le date sono valide e la data di inizio è prima della data di fine
         next()
       }else{
-        //console.log("2")
         next("error date non valida")
       }
     } else if(!Object.keys(req.body).includes('start_date') && Object.keys(req.body).includes('end_date') ){
-      req.body.start_date = "1970-01-01T00:00:00.000"//Z"
+      // caso 2: se l'utente ha indicato solo la data di fine viene impostata quella di inizio
+      req.body.start_date = "1970-01-01T00:00:00.000"
       if( (check.test(req.body.end_date) && Date.parse(req.body.end_date)) &&
         Date.parse(req.body.start_date) <= Date.parse(req.body.end_date) ){
+        // se le date sono valide
         next()
       }else{
-        //console.log("2")
         next("error end date")
       }
-    } else if (!Object.keys(req.body).includes('end_date') && Object.keys(req.body).includes('start_date')){ // only start date
+    } else if (!Object.keys(req.body).includes('end_date') && Object.keys(req.body).includes('start_date')){
+        // caso 3: se l'utente ha indicato solo la data di inizio viene impostata quella di fine
         // set della data odierna
         const today = new Date();
         const month = (today.getMonth() + 1).toString().padStart(2, '0');
@@ -66,12 +75,12 @@ export const validateDate = async (req:any,res:any,next:any) =>{
 
         if(check.test(req.body.start_date) && Date.parse(req.body.start_date) &&
         Date.parse(req.body.start_date) <= Date.parse(req.body.end_date) ){
+          // se le date sono valide
           next()
         }else{
-          //console.log("2")
           next("error date non valida")
         }
     } else {
-       next()  // without date filters
+       next()  // caso 4: vuol dire che l'utente non vuole filtrare per data
     }
 }

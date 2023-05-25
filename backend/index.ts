@@ -8,12 +8,9 @@ const bodyparser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql2');
 
-// require('dotenv').config();
-
 const app = express();
 
-//sapp.use(cors());
-
+// Body della richiesta deve essere in formato json
 app.use(bodyparser.json());
 
 app.use((req:any, res:any, next:any) => {
@@ -40,11 +37,12 @@ app.post('/event', middleware.validateTopic,middleware.validateValueTopic,middle
   controller.eventsList(filter, res);
 });
 
+// Rotta per ottenere gli ultimi eventi registrati
 app.get("/lastEvents",(req:any,res:any)=>{
   controller.getLastEvents(res)
 });
 
-
+// Si mette l'applicazione in ascolto sulla porta 3000
 app.listen(3000,()=>{
   console.log('server running');
 })

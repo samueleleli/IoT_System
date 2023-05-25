@@ -11,26 +11,34 @@ import time
 #Caricamento delle variabili d'ambiente
 load_dotenv()
 
-
 MYSQLUSER=  os.getenv('MYSQLUSER')
 MYSQLDB=  os.getenv('MYSQLDB')
 MYSQLHOST=  os.getenv('MYSQLHOST')
 MYSQLPASSWORD=  os.getenv('MYSQLPASSWORD')
 MYSQLPORT=  os.getenv('MYSQLPORT')
 
-# define the callback function for when a message is received
+
+Base = declarative_base()
+# classe per definire il modello della tabella Data, la quale contiene i dati del db
+class Data(Base):
+    __tablename__ = "Data"
+
+    topic = Column(String, primary_key=True)
+    timestamp = Column(TIMESTAMP, primary_key=True)
+    value = Column(String)
+
+# definizione della funzione di callback nel momento in cui arrivano nuovi messaggi
 def on_message(client, userdata, message):
     print("Received message on topic:", message.topic)
     print("Message payload:", message.payload)
 
-    # assume the message payload is stored in a variable called 'payload'
-    payload_str = message.payload.decode('utf-8') # convert the payload bytes to a string
-    payload_dict = json.loads(payload_str) # parse the payload string into a dictionary
+    payload_str = message.payload.decode('utf-8')   # conversione del payload del messaggio in una stringa
+    payload_dict = json.loads(payload_str)          # parsing del payload in un json
     print(payload_dict)
-    # access the value of the 'timestamp' key in the dictionary
-    timestamp = payload_dict['timestamp']
-    value = payload_dict['value']
+    timestamp = payload_dict['timestamp']           # si prende il valore del timestamp
+    value = payload_dict['value']                   # si prende il valore associato al topic
     try:
+        # inzio transazione (DB)
         Session = sessionmaker()
         Session.configure(bind=engine)
         session = Session()
@@ -41,17 +49,7 @@ def on_message(client, userdata, message):
         print("Some problems occured on inserting data in db")
 
 
-# Connection to database 
-Base = declarative_base()
-
-class Data(Base):
-    __tablename__ = "Data"
-
-    topic = Column(String, primary_key=True)
-    timestamp = Column(TIMESTAMP, primary_key=True)
-    value = Column(String)
-
-#configurazione db (DA ADATTARE AL PROPRIO username e password
+#configurazione db (DA ADATTARE AL PROPRIO username e password tramite il file .env)
 
 connection_string = f"mysql+mysqlconnector://{MYSQLUSER}:{MYSQLPASSWORD}@{MYSQLHOST}:{MYSQLPORT}/{MYSQLDB}?auth_plugin=mysql_native_password"
 connection_ok = False
@@ -59,14 +57,14 @@ while not connection_ok:
  try:
   engine = create_engine(connection_string, echo=True)
 
-  # client creation
+  # creazione del client
   client_id = "client-db"
-  client =mqtt.Client(client_id) # creazione nuovo client (argomento: nome del client)
+  client =mqtt.Client(client_id)
 
-  # set the callback function
+  # setting della funzione di callback richiamata ogni volta che viene pubblicato un messaggio
   client.on_message = on_message
 
-  # connection to mqtt broker
+  # connessione al broker mqtt
   broker_address= "localhost"  # da cambiare con quello del pc in cui si trova il broker
   client.connect(broker_address) # connessione del client al broker
   connection_ok = True
@@ -76,14 +74,14 @@ while not connection_ok:
   time.sleep(10)
 
 
-# subscribe to multiple topics
+# sottoscrizione ai 3 topic
 topic1 = "led"
 topic2= "movimento"
 topic3 = "proxZone"
 
-client.subscribe(topic1, qos=0) # to unsubscribe: unsubscribe(topic)
+client.subscribe(topic1, qos=0)
 client.subscribe(topic2, qos=0)
 client.subscribe(topic3, qos=0)
 
-# start the MQTT loop to listen for incoming messages
+# inizio del loop mqtt
 client.loop_forever()
