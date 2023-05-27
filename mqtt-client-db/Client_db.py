@@ -58,8 +58,7 @@ while not connection_ok:
   engine = create_engine(connection_string, echo=True)
 
   # creazione del client
-  client_id = "client-db"
-  client =mqtt.Client(client_id)
+  client = mqtt.Client(client_id="client-db", clean_session=False)
 
   # setting della funzione di callback richiamata ogni volta che viene pubblicato un messaggio
   client.on_message = on_message
@@ -75,13 +74,9 @@ while not connection_ok:
 
 
 # sottoscrizione ai 3 topic
-topic1 = "led"
-topic2= "movimento"
-topic3 = "proxZone"
-
-client.subscribe(topic1, qos=0)
-client.subscribe(topic2, qos=0)
-client.subscribe(topic3, qos=0)
+client.subscribe("led", qos=1)
+client.subscribe("movimento", qos=1)
+client.subscribe("proxZone", qos=1)
 
 # inizio del loop mqtt
 client.loop_forever()

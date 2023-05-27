@@ -35,7 +35,7 @@ possible_states = [["acceso","spento"],["rilevato"],["entrata","uscita"]] # valo
 
 ser = inizializza_seriale()               # inizializzazione seriale
 
-client = mqtt.Client("raspberry-client")  # creazione del client
+client = mqtt.Client(client_id="raspberry-client", clean_session=False) # creazione del client
 client.connect("sam.local")               # connessione del client al broker
 client.on_disconnect = on_disconnect      # callback nel caso di disconnessione
 
@@ -57,7 +57,7 @@ with ser:  # Utilizzo del blocco 'with' per gestire l'apertura e la chiusura del
               # creazione del messaggio da pubblicare
               data = "{\"value\":\""+payload_dict["value"]+"\",\"timestamp\":\""+payload_dict["timestamp"]+"\"}"
               #publicazione del messaggio sul topic
-              client.publish(topic,data)
+              client.publish(topic,data,qos=1, retain=False)
         except json.JSONDecodeError as e:
           print("Json non valido")
     except serial.SerialException as e:

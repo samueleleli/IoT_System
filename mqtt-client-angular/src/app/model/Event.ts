@@ -19,11 +19,11 @@ export class Event {
       case "led":
         return "Led"
       case "proxZone":
-        return "Ultrasuoni"
+        return "Zona di prossimità"
       case "movimento":
         return "Movimento"
       case "prossimita":
-        return "Ultrasuoni"
+        return "Zona di prossimità"
     }
     return "N/D";
   }

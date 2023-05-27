@@ -34,9 +34,8 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql2');
-// require('dotenv').config();
 const app = express();
-//sapp.use(cors());
+// Body della richiesta deve essere in formato json
 app.use(bodyparser.json());
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -60,9 +59,11 @@ app.post('/event', middleware.validateTopic, middleware.validateValueTopic, midd
         filter.set("timestamp", { [sequelize_1.Op.between]: [(0, moment_1.default)(req.body.start_date).utcOffset("+02:00").format(), (0, moment_1.default)(req.body.end_date).utcOffset("+02:00").format()] });
     controller.eventsList(filter, res);
 });
+// Rotta per ottenere gli ultimi eventi registrati
 app.get("/lastEvents", (req, res) => {
     controller.getLastEvents(res);
 });
+// Si mette l'applicazione in ascolto sulla porta 3000
 app.listen(3000, () => {
     console.log('server running');
 });

@@ -11,27 +11,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getLastEvents = exports.eventsList = void 0;
 // Import libraries
-const singleton_1 = require("../Singleton/singleton");
 const Data_1 = require("../Models/Data");
-const sequelize = singleton_1.DBSingleton.getConnection();
+// funzione che fa la query nel db per ottenere la lista degli eventi filtrati o la lista di tutti gli eventi
 function eventsList(filterMap, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            if (filterMap.size == 0) {
+            if (filterMap.size == 0) { // se l'oggetto Map non ha dati al suo interno
+                // ricerca senza filtri
                 yield Data_1.Data.findAll({
                     attributes: ['topic', 'value', 'timestamp'],
                     order: [['timestamp', 'DESC']],
                 }).then((eventsList) => {
+                    // restituzione lista di tutti gli eventi
                     res.status(200).json({ Message: "All events", EventsList: eventsList });
                 });
             }
             else {
+                // altrimenti si ottiene l'oggetto dall'oggeto map
                 let filterObj = Object.fromEntries(filterMap);
                 Data_1.Data.findAll({
                     where: filterObj,
                     attributes: ['topic', 'value', 'timestamp'],
                     order: [['timestamp', 'DESC']],
                 }).then((eventsList) => {
+                    // restituzione degli eventi filtrati
                     res.status(200).json({ Message: "Filtered Events", EventsList: eventsList });
                 });
             }
@@ -42,11 +45,16 @@ function eventsList(filterMap, res) {
     });
 }
 exports.eventsList = eventsList;
+// funzione che fa la query nel db per ottenere gli ultimi eventi registrati
 function getLastEvents(res) {
     return __awaiter(this, void 0, void 0, function* () {
+        // lista dei topic
         const topics = ['led', 'movimento', 'proxZone'];
+        // inizializzazione lista da mandare
         const mostRecentEvents = [];
+        // si scorre la lista dei topic
         for (const topic of topics) {
+            // viene ottenuto l'ultimo evento per il topic selezionato
             const mostRecentEvent = yield Data_1.Data.findOne({
                 where: {
                     topic: topic
@@ -54,8 +62,10 @@ function getLastEvents(res) {
                 order: [['timestamp', 'DESC']],
                 limit: 1,
             });
+            // viene inserito nella lista
             mostRecentEvents.push(mostRecentEvent);
         }
+        // invio della lista al client
         res.status(200).json({ Message: "Most recents events", EventsList: mostRecentEvents });
     });
 }

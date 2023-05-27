@@ -4,8 +4,8 @@
   <table class="styled-table">
     <thead>
       <tr>
-        <th>Sensore</th>
-        <th>Stato</th>
+        <th>Topic</th>
+        <th>Evento</th>
         <th>Ultimo Aggiornamento</th>
       </tr>
     </thead>
@@ -16,12 +16,12 @@
         <td>{{ localStorageSensors.getItem('ledTimestamp')}}</td>
       </tr>
       <tr>
-        <td style="font-weight:bold">Infrarossi</td>
+        <td style="font-weight:bold">Movimento</td>
         <td>{{ localStorageSensors.getItem('movimentoStatus') }}</td>
         <td>{{ localStorageSensors.getItem('movimentoTimestamp') }}</td>
       </tr>
       <tr>
-        <td style="font-weight:bold">Ultrasuoni</td>
+        <td style="font-weight:bold">Zona di prossimità</td>
         <td>{{ localStorageSensors.getItem('prossimitaStatus') }}</td>
         <td>{{ localStorageSensors.getItem('prossimitaTimestamp') }}</td>
       </tr>
