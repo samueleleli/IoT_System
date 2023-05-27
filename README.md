@@ -3,7 +3,7 @@
 
 L'obiettivo del progetto è stato quello di realizzare un applicativo IoT completo, ovvero, partendo dall'acquisizione dei dati  tramite sensori si è arrivati al loro salvataggio e, infine, alla loro visualizzazione.
 
-Il progetto è composta da dei dispositivi, componenti e software da dover utilizzare obbligatoriamente e da dei requisiti da dover rispettare. Il tutto è riassumibile nella seguente tabella:
+Il progetto è composto da dei dispositivi, componenti e software da dover utilizzare obbligatoriamente e da dei requisiti da dover rispettare. Il tutto è riassumibile nella seguente tabella:
 <p align="center">
   <img width="55%" height="55%" src="https://github.com/samueleleli/IoT_application/assets/45701240/97a623f8-8d48-4435-a6d9-0a14ec49aa9a">
 </p>
@@ -16,9 +16,10 @@ La repository è composta da 5 directory:
 - _**mqtt-client-db**_ : contiene il client MQTT che è sottoscritto a tutti i topic e resta in attesa di nuovi eventi. Alla ricezione di eventi li aggiunge al database.
 - _**raspberry**_: contiene al suo interno due script. Uno che permette di recuperare gli eventi inviati da Arduino tramite seriale e li pubblica sui topic. L'altro contiene lo script che permette di sincronizzare l'_**RTC**_.
 
-Un'immigine semplificativa dei collegamenti tra i dispositivi è mostrata di seguito:
+Un'immagine semplificativa dei collegamenti tra i dispositivi è mostrata di seguito:
 <p align="center">
-  <img width="50%" height="50%" src="https://github.com/samueleleli/IoT_application/assets/45701240/4d035aaf-cd8d-40a5-b7fc-aa69e71a5b94">
+    <img width="50%" height="50%" src="https://github.com/samueleleli/IoT_application/assets/57714440/bf883553-3480-4710-9389-9df6c29518f3">
+
 </p>
 
 ## Autori
