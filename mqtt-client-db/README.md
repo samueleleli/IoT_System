@@ -44,7 +44,7 @@ Le librerie necessarie sono:
 sudo cp ./Client_db.py  /etc/init.d && sudo chmod +x /etc/init.d/Client_db.py
 ```
 
-3) Creazione del file di unità del servizio all'interno di "/etc/systemd/system", copiando al suo interno il contenuto del file "mqtt-client-db/service/client_db.service.service":
+3) Creazione del file di unità del servizio all'interno di "/etc/systemd/system", copiando al suo interno il contenuto del file "mqtt-client-db/service/client_db.service":
 
 ```bash
 sudo nano /etc/systemd/system/client_db.service
