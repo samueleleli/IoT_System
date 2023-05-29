@@ -41,9 +41,9 @@ L'applicazione viene avviata in ascolto sulla **porta 4200**.
   ```
 
 4) Avvio del Frontend Angular
-   ```bash
-   ng serve
-   ```
+  ```bash
+  ng serve
+  ```
 Per verificare il corretto avvio del frontend, accedere da browser all'indirizzo http://localhost:4200/.
 
 
