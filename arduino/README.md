@@ -48,7 +48,7 @@ Per la sincronizzazione del modulo RTC per il timestamp è necessario eseguire i
 
 ## Esecuzione programma per elaborazione dati da sensori
 
-Per l'elaborazione dati, è necessario eseguire, dopo il programma di sincronizzazione del modulo RTC, il programma "skecth_FreeRTOS_5.ino".
+Per l'elaborazione dati, è necessario eseguire, dopo il programma di sincronizzazione del modulo RTC, il programma "sketch_FreeRTOS_5.ino".
 
 
 ## Autori
