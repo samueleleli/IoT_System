@@ -42,7 +42,7 @@ Le librerie necessarie sono:
 sudo cp ./Client_db.py  /etc/init.d && sudo chmod +x /etc/init.d/Client_db.py
 ```
 
-3) Creazione del file di unità del servizio all'interno di "/etc/systemd/system", copiando al suo interno il contenuto del file "mqtt-client-db/service/publisher_sensors_data.service":​
+3) Creazione del file di unità del servizio all'interno di "/etc/systemd/system", copiando al suo interno il contenuto del file "mqtt-client-db/service/client_db.service":
 
 ```bash
 sudo nano /etc/systemd/system/client_db.service
@@ -65,23 +65,23 @@ sudo nano /etc/systemd/system/client_db.service
 6) Controllo del servizio:
   - Avvio al boot:
     ```bash
-    sudo systemctl enable client_db​
+    sudo systemctl enable client_db
     ```
   - Start:
     ```bash
-    sudo systemctl start client_db​
+    sudo systemctl start client_db
     ```
   - Stop:
     ```bash
-    sudo systemctl stop client_db​
+    sudo systemctl stop client_db
     ```
  - Status:
     ```bash
-    sudo systemctl status client_db​
+    sudo systemctl status client_db
     ```
   - A ogni cambiamento dei file:
     ```bash
-    systemctl daemon-reload ​
+    systemctl daemon-reload
     sudo systemctl restart client_db    
     ```
 

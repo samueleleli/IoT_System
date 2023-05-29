@@ -3,7 +3,7 @@ Description=Servizio che si sottoscrive ai topic e che inserisce i dati nel data
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3.8 /etc/init.d/Client_db.py
+ExecStart=/usr/bin/python3 /etc/init.d/Client_db.py
 WorkingDirectory=/etc/init.d
 Restart=always
 
