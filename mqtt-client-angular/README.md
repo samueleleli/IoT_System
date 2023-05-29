@@ -1,26 +1,25 @@
+# Applicazione Frontend in Angular
 
-# Server Backend
+Frontend realizzato utilizzando il framework Angular.
 
-Applicazione server scritta in JavaScript utilizzando il framework Express.js. Questa applicazione fornisce un'API per gestire gli eventi registrati nel database offrendo funzionalità come la visualizzazione della lista degli eventi filtrata per topic, valore del topic e data/ora e l'accesso agli ultimi eventi.
+L'applicazione web è costituita da 3 sezioni:
 
-L'applicazione definisce due rotte principali. La prima è una rotta POST ("http://localhost:3000/event") che accetta una richiesta per ottenere la lista degli eventi filtrati. Prima di elaborare la richiesta, vengono eseguiti alcuni middleware di validazione per controllare la correttezza dei parametri inviati. Se i parametri sono validi, si ottiente la lista degli eventi filtrati e viene inviata come risposta al client.
+- L'homepage: tramite la sezione homepage viene descritto in breve il progetto, vengono mostrate le tecnologie utilizzate per realizzarlo e, infine, nella porzione che contiene il footer, i contatti relativi agli autori del progetto.
 
-La seconda rotta è una rotta GET ("http://localhost:3000/lastEvents") che restituisce gli ultimi eventi registrati. Questa rotta non richiede alcun parametro.
+- La sezione "Real-time": tramite la sezione "Real-time" è possibile visualizzare gli eventi relativi ai tre topic in tempo reale, ovvero nel momento in cui vengono prodotti.
 
-L'app Express viene avviata in ascolto sulla **porta 3000**.
+- La sezione "Storico": tramite la sezione "Storico" è possibile visualizzare gli eventi relativi ai tre topic permettendo un filtraggio per nome del topic, valore e data. Il filtraggio avviene sul database attraverso il backend apposito.
+
+L'applicazione viene avviata in ascolto sulla **porta 4200**.
 
 ## Strumenti Utilizzati 
 
 * [Visual Studio Code](https://code.visualstudio.com/): per lo sviluppo del codice
-* [Postman](https://www.postman.com/): per effettuare il test delle rotte
 
 ## Librerie/Framework
 
-* [Node.JS](https://nodejs.org/en/)
+* [Angular](https://angular.io/)
 * [Typescript](https://www.typescriptlang.org/)
-* [Sequelize](https://sequelize.org/) 
-* [Nodemon](https://nodemon.io/)
-* [Express](http://expressjs.com/) 
 
 ## Configurazione e Avvio del server
 1) Installazione di node JS e npm
@@ -31,34 +30,22 @@ L'app Express viene avviata in ascolto sulla **porta 3000**.
   sudo npm install -g n
   sudo n latest
   ``` 
-2) Installazione librerie:
+
+2) Avviare il backend (in caso contrario non funzionerà lo storico)
+
+3) Installare Angular e le dipendenze di progetto
   ```bash
-  cd ./backend
-  npm install -g typescript​
-  npm install -g sequelize
-  npm install -g nodemon
+  cd IoT_application/mqtt-client-angular
+  sudo npm install -g @angular/cli
   npm install
   ```
-  3) Creare di un file chiamato ".env" con questa struttura
-  (Inserire al suo interno i propri dati) 
-  ```bash
-  MYSQLUSER=
-  MYSQLDB=
-  MYSQLHOST=
-  MYSQLPASSWORD=
-  MYSQLPORT=
-  ```
 
-4) Compilazione file Typescript e Avvio del server
+4) Avvio del Frontend Angular
+   ```bash
+   ng serve
+   ```
+Per verificare il corretto avvio del frontend, accedere da browser all'indirizzo http://localhost:4200/.
 
-  ```bash
-  tsc
-  nodemon index.js
-  ```
-
-
-
-**_N.B. Bisogna avere un server mysql installato e attivo nella propria macchina_**
 
 ## Autori
 
