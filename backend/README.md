@@ -11,7 +11,7 @@ L'app Express viene avviata in ascolto sulla **porta 3000**.
 
 ## Strumenti Utilizzati 
 
-* [Visual Studio Code](https://code.visualstudio.com/): per lo svilippo del codice
+* [Visual Studio Code](https://code.visualstudio.com/): per lo sviluppo del codice
 * [Postman](https://www.postman.com/): per effettuare il test delle rotte
 
 ## Librerie/Framework

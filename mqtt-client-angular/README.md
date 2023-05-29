@@ -1,27 +1,68 @@
-# MqttClientAngularJs
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
+# Server Backend
 
-## Development server
+Applicazione server scritta in JavaScript utilizzando il framework Express.js. Questa applicazione fornisce un'API per gestire gli eventi registrati nel database offrendo funzionalità come la visualizzazione della lista degli eventi filtrata per topic, valore del topic e data/ora e l'accesso agli ultimi eventi.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+L'applicazione definisce due rotte principali. La prima è una rotta POST ("http://localhost:3000/event") che accetta una richiesta per ottenere la lista degli eventi filtrati. Prima di elaborare la richiesta, vengono eseguiti alcuni middleware di validazione per controllare la correttezza dei parametri inviati. Se i parametri sono validi, si ottiente la lista degli eventi filtrati e viene inviata come risposta al client.
 
-## Code scaffolding
+La seconda rotta è una rotta GET ("http://localhost:3000/lastEvents") che restituisce gli ultimi eventi registrati. Questa rotta non richiede alcun parametro.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+L'app Express viene avviata in ascolto sulla **porta 3000**.
 
-## Build
+## Strumenti Utilizzati 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* [Visual Studio Code](https://code.visualstudio.com/): per lo sviluppo del codice
+* [Postman](https://www.postman.com/): per effettuare il test delle rotte
 
-## Running unit tests
+## Librerie/Framework
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* [Node.JS](https://nodejs.org/en/)
+* [Typescript](https://www.typescriptlang.org/)
+* [Sequelize](https://sequelize.org/) 
+* [Nodemon](https://nodemon.io/)
+* [Express](http://expressjs.com/) 
 
-## Running end-to-end tests
+## Configurazione e Avvio del server
+1) Installazione di node JS e npm
+  ```bash
+  sudo apt install nodejs
+  node -v # per verificare versione
+  sudo apt install npm
+  sudo npm install -g n
+  sudo n latest
+  ``` 
+2) Installazione librerie:
+  ```bash
+  cd ./backend
+  npm install -g typescript​
+  npm install -g sequelize
+  npm install -g nodemon
+  npm install
+  ```
+  3) Creare di un file chiamato ".env" con questa struttura
+  (Inserire al suo interno i propri dati) 
+  ```bash
+  MYSQLUSER=
+  MYSQLDB=
+  MYSQLHOST=
+  MYSQLPASSWORD=
+  MYSQLPORT=
+  ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+4) Compilazione file Typescript e Avvio del server
 
-## Further help
+  ```bash
+  tsc
+  nodemon index.js
+  ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+**_N.B. Bisogna avere un server mysql installato e attivo nella propria macchina_**
+
+## Autori
+
+- [Lisa Burini](https://github.com/lisaburini)
+- [Anna Di Gaetano](https://github.com/Annadiga)
+- [Matteo Ferretti](https://github.com/MatteoFerretti98)
+- [Samuele Leli](https://github.com/samueleleli)

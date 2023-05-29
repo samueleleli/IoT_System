@@ -41,6 +41,8 @@ client.on_disconnect = on_disconnect      # callback nel caso di disconnessione
 
 print("Inizio lettura dalla seriale")
 
+client.loop_start()
+
 with ser:  # Utilizzo del blocco 'with' per gestire l'apertura e la chiusura della connessione seriale
   while True:
     try:
@@ -65,4 +67,4 @@ with ser:  # Utilizzo del blocco 'with' per gestire l'apertura e la chiusura del
       print("Lettura sulla seriale interrotta..")
       print("Tentativo di riconnessione in corso")
       ser = inizializza_seriale()
-    client.loop(.1)
+    time.sleep(0.1)

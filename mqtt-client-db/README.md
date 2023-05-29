@@ -30,8 +30,6 @@ Le librerie necessarie sono:
 
   ```
 
-
-
 ## Configurazione e Avvio del client
 
 
